@@ -16,5 +16,10 @@ def get_quiz():
     questions = query.get_list_questions()
     return jsonify(questions)
 
+@app.route('/answers', methods=['POST'])
+def get_answers():
+    answers = query.get_list_answers()
+    return jsonify(answers)
+
 if __name__ == '__main__':
     app.run()

@@ -1,4 +1,3 @@
-/* eslint-disable no-undef */
 import Vue from 'vue';
 import Vuex from 'vuex';
 
@@ -8,7 +7,7 @@ export default new Vuex.Store({
   state: {
     numQuestion: 1,
     countQuestions: 0,
-    listQuestions: {},
+    listQuestions: [],
   },
   getters: {
     NUM_QUESTION: state => state.numQuestion,
@@ -16,17 +15,22 @@ export default new Vuex.Store({
     QUESTIONS: state => state.listQuestions,
   },
   mutations: {
-    CHANGE_NUM_QUESTION(newNum) {
-      state.numQuestion = newNum;
+    CHANGE_COUNT_QUESTION(state, cnt) {
+      state.countQuestions = cnt;
     },
-    CHANGE_LIST(newNum) {
-      state.numQuestion = newNum;
+    CHANGE_LIST(state, newList) {
+      state.listQuestions = newList;
     },
   },
   actions: {
     changeNum({ commit }, num) {
       const newNum = num;
-      commit('CHANGE_EFF', newNum);
+      commit('CHANGE_COUNT_QUESTION', newNum);
+    },
+    changeList({ commit }, list) {
+      const newList = list;
+      commit('CHANGE_LIST', newList);
     },
   },
+  modules: {},
 });
