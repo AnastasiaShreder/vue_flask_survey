@@ -2,14 +2,40 @@
   <div class="start-wrapper">
     <div class="start-wrapper__border"></div>
     <div class='start-wrapper__btn'>
-      <button class='start-btn'>Начать тестирование</button>
+      <button class='start-btn' @click='onClickStartTest'>Начать тестирование</button>
     </div>
   </div>
 </template>
 
 <script>
+import axios from 'axios';
+import { mapActions } from 'vuex';
+
 export default {
   name: 'StartButton',
+  methods: {
+    ...mapActions(['changeList', 'changeNum']),
+    onClickStartTest() {
+      axios.get('http://localhost:5000/quiz')
+        .then((response) => {
+        // eslint-disable-next-line no-console
+          console.log(response.data);
+          // this.changeList(response.data);
+          const listCount = Object.keys(response.data).length;
+          this.changeNum(listCount);
+          this.changeList(response.data);
+          // eslint-disable-next-line no-console
+          console.log(listCount);
+          // this.changeNum()
+        })
+      // Если запрос с ошибкой
+        .catch((error) => {
+        // eslint-disable-next-line no-console
+          console.log(error);
+        });
+      // получение всех вопросов и ответов
+    },
+  },
 };
 </script>
 

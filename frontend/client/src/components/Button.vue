@@ -1,14 +1,20 @@
 <template>
   <div>
     <div class="btn-wrapper">
-      <button class='btn-hover'>Повторить опрос</button>
+      <button class='btn-hover' @click="onClickRestart">Повторить опрос</button>
     </div>
   </div>
 </template>
 
 <script>
+// eslint-disable-next-line no-unused-vars
+import axios from 'axios';
+
 export default {
   name: 'Button',
+  methods: {
+    onClickRestart() {},
+  },
 };
 </script>
 

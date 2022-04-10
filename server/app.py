@@ -1,20 +1,25 @@
-from flask import Flask, jsonify
+from flask import jsonify
 from flask_cors import CORS
-
-# configuration
-DEBUG = True
-
-# instantiate the app
-app = Flask(__name__)
-app.config.from_object(__name__)
+from app import app
+import query
 
 # enable CORS
 CORS(app)
 
 # sanity check route
-@app.route('/ping', methods=['GET'])
-def ping_pong():
-    return jsonify('pong!')
+@app.route('/ping')
+def ping():
+    return jsonify(success=True)
+
+@app.route('/quiz', methods=['GET'])
+def get_quiz():
+    questions = query.get_list_questions()
+    return jsonify(questions)
+
+@app.route('/answers', methods=['POST'])
+def get_answers():
+    answers = query.get_list_answers()
+    return jsonify(answers)
 
 if __name__ == '__main__':
     app.run()

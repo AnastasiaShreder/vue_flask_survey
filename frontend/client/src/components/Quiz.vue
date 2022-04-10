@@ -1,6 +1,6 @@
 <template>
-  <div class="quiz-wrapper__answers">
-    <div class="answers__A answer answer-animated answer-back">
+  <div class="quiz-wrapper__answers" >
+    <div class="answers__A answer answer-animated answer-back" @click="onClickAnswer">
       <div class="answer__box">
         <div class="letter__wrapper">
           <div class="answers__letter">
@@ -12,7 +12,7 @@
         </div>
       </div>
     </div>
-    <div class="answers__B answer">
+    <div class="answers__B answer" @click="onClickAnswer">
       <div class="answer__box">
         <div class="letter__wrapper">
           <div class="answers__letter">
@@ -24,7 +24,7 @@
         </div>
       </div>
     </div>
-    <div class="answers__C answer">
+    <div class="answers__C answer" @click="onClickAnswer">
       <div class="answer__box">
         <div class="letter__wrapper">
           <div class="answers__letter">
@@ -36,7 +36,7 @@
         </div>
       </div>
     </div>
-    <div class="answers__D answer">
+    <div class="answers__D answer" @click="onClickAnswer">
       <div class="answer__box">
         <div class="letter__wrapper">
           <div class="answers__letter">
@@ -54,6 +54,11 @@
 <script>
 export default {
   name: 'Quiz',
+  methods: {
+    onClickAnswer() {
+
+    },
+  },
 };
 </script>
 

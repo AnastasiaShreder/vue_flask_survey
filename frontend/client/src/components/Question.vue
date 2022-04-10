@@ -1,17 +1,22 @@
 <template>
   <div class="quiz-wrapper__question">
-        <div class="question__num">Вопрос 14/25</div>
-        <div class="question__text">Lorem ipsum dolor sit amet consectetur adipisicing elit.
-          Nihil iste molestias animi doloremque
-          sed quod quisquam maiores adipisci enim voluptatem deleniti excepturi assumenda sit,
-          nobis at incidunt repudiandae, minima debitis!
+        <div class="question__num">Вопрос {{ NUM_QUESTION }}/{{ CNT_QUESTIONS }}</div>
+        <div class="question__text">{{ questionText }}
         </div>
       </div>
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
+
 export default {
   name: 'Question',
+  computed: {
+    ...mapGetters(['NUM_QUESTION', 'CNT_QUESTIONS', 'QUESTIONS']),
+    questionText() {
+      return this.QUESTIONS[this.NUM_QUESTION - 1];
+    },
+  },
 };
 
 </script>
