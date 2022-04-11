@@ -11,7 +11,7 @@ def get_list_questions():
   return list
 get_list_questions()
 
-def get_list_answers(q_id):
+def get_answers(q_id):
   list = {}
   answers = Answers.query.filter_by(question_id=q_id)
   for a in answers:
@@ -19,9 +19,15 @@ def get_list_answers(q_id):
     list[a.answer] = a.mthd
   print(list)
   return list
-get_list_answers(1)
 
-
+def get_list_answers():
+  list = {}
+  answers = Answers.query.all()
+  for a in answers:
+    print(a)
+    list[a.answer] = a.mthd
+  print(list)
+  return list
 # a = Answers(question_id="5",
 # answer="Да",
 # mthd="A")

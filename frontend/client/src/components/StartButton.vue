@@ -9,7 +9,7 @@
 
 <script>
 import axios from 'axios';
-import { mapActions } from 'vuex';
+import { mapActions, mapGetters } from 'vuex';
 
 export default {
   name: 'StartButton',
@@ -33,8 +33,28 @@ export default {
         // eslint-disable-next-line no-console
           console.log(error);
         });
-      // получение всех вопросов и ответов
+      const numQuest = this.NUM_QUESTION;
+      const formData = new FormData();
+      formData.append('number', numQuest);
+      axios.post('http://localhost:5000/answers', formData)
+        .then((response) => {
+        // eslint-disable-next-line no-console
+          console.log(response.data);
+          // this.changeList(response.data);
+          const listCount = Object.keys(response.data).length;
+          // eslint-disable-next-line no-console
+          console.log(listCount);
+          // this.changeNum()
+        })
+      // Если запрос с ошибкой
+        .catch((error) => {
+        // eslint-disable-next-line no-console
+          console.log(error);
+        });
     },
+  },
+  computed: {
+    ...mapGetters(['NUM_QUESTION', 'CNT_QUESTIONS', 'QUESTIONS']),
   },
 };
 </script>

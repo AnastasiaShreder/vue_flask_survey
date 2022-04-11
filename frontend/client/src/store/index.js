@@ -8,11 +8,13 @@ export default new Vuex.Store({
     numQuestion: 1,
     countQuestions: 0,
     listQuestions: [],
+    listAnswers: [],
   },
   getters: {
     NUM_QUESTION: state => state.numQuestion,
     CNT_QUESTIONS: state => state.countQuestions,
     QUESTIONS: state => state.listQuestions,
+    ANSWERS: state => state.listAnswers,
   },
   mutations: {
     CHANGE_COUNT_QUESTION(state, cnt) {
@@ -20,6 +22,9 @@ export default new Vuex.Store({
     },
     CHANGE_LIST(state, newList) {
       state.listQuestions = newList;
+    },
+    CHANGE_ANSWERS(state, newList) {
+      state.listAnswers = newList;
     },
   },
   actions: {
@@ -30,6 +35,10 @@ export default new Vuex.Store({
     changeList({ commit }, list) {
       const newList = list;
       commit('CHANGE_LIST', newList);
+    },
+    changeAnswers({ commit }, list) {
+      const newList = list;
+      commit('CHANGE_ANSWERS', newList);
     },
   },
   modules: {},
