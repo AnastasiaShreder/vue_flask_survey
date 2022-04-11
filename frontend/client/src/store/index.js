@@ -8,17 +8,22 @@ export default new Vuex.Store({
     numQuestion: 1,
     countQuestions: 0,
     listQuestions: [],
-    listAnswers: [],
+    listAnswers: {},
+    listScore: { A: 0, W: 0, O: 0 },
   },
   getters: {
     NUM_QUESTION: state => state.numQuestion,
     CNT_QUESTIONS: state => state.countQuestions,
     QUESTIONS: state => state.listQuestions,
     ANSWERS: state => state.listAnswers,
+    LIST_SCORE: state => state.listScore,
   },
   mutations: {
     CHANGE_COUNT_QUESTION(state, cnt) {
       state.countQuestions = cnt;
+    },
+    CHANGE_NUM_QUESTION(state) {
+      state.numQuestion += 1;
     },
     CHANGE_LIST(state, newList) {
       state.listQuestions = newList;
@@ -26,11 +31,17 @@ export default new Vuex.Store({
     CHANGE_ANSWERS(state, newList) {
       state.listAnswers = newList;
     },
+    CHANGE_SCORE(state, method) {
+      state.listScore[method] += 1;
+    },
   },
   actions: {
-    changeNum({ commit }, num) {
-      const newNum = num;
-      commit('CHANGE_COUNT_QUESTION', newNum);
+    changeCnt({ commit }, cnt) {
+      const newCnt = cnt;
+      commit('CHANGE_COUNT_QUESTION', newCnt);
+    },
+    changeNum({ commit }) {
+      commit('CHANGE_NUM_QUESTION');
     },
     changeList({ commit }, list) {
       const newList = list;
@@ -39,6 +50,9 @@ export default new Vuex.Store({
     changeAnswers({ commit }, list) {
       const newList = list;
       commit('CHANGE_ANSWERS', newList);
+    },
+    changeScore({ commit }, method) {
+      commit('CHANGE_SCORE', method);
     },
   },
   modules: {},

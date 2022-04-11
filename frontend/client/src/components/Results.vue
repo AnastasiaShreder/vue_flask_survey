@@ -25,8 +25,17 @@
 </template>
 
 <script>
+import { mapGetters, mapActions } from 'vuex';
 export default {
   name: 'Results',
+
+  computed: {
+    ...mapGetters(['NUM_QUESTION', 'CNT_QUESTIONS', 'QUESTIONS', 'ANSWERS']),
+    resultMethod() {
+      const elem = Object.entries((this.ANSWERS)[this.NUM_QUESTION - 1]);
+      return 0;
+    },
+  },
 };
 </script>
 

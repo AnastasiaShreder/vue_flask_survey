@@ -1,50 +1,50 @@
 <template>
   <div class="quiz-wrapper__answers" >
-    <div class="answers__A answer answer-animated answer-back" @click="onClickAnswer">
-      <div class="answer__box">
+    <div class="answers__A answer answer-animated answer-back">
+      <div class="answer__box" @click="onClickAnswer">
         <div class="letter__wrapper">
           <div class="answers__letter">
-            <p>A</p>
+            <p><img src="../assets/A.svg" alt="A" width="15px" height="15px"></p>
           </div>
         </div>
         <div class="answers__text">
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+          {{ getAnswers('0') }}
         </div>
       </div>
     </div>
-    <div class="answers__B answer" @click="onClickAnswer">
-      <div class="answer__box">
+    <div class="answers__B answer">
+      <div class="answer__box" @click="onClickAnswer">
         <div class="letter__wrapper">
           <div class="answers__letter">
-            <p>B</p>
+            <p><img src="../assets/B.svg" alt="B" width="15px" height="15px"></p>
           </div>
         </div>
         <div class="answers__text">
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+          {{ getAnswers('1') }}
         </div>
       </div>
     </div>
-    <div class="answers__C answer" @click="onClickAnswer">
-      <div class="answer__box">
+    <div class="answers__C answer">
+      <div class="answer__box" @click="onClickAnswer">
         <div class="letter__wrapper">
           <div class="answers__letter">
-            <p>C</p>
+            <p><img src="../assets/C.svg" alt="C" width="16px" height="15px"></p>
           </div>
         </div>
         <div class="answers__text">
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+          {{ getAnswers('2') }}
         </div>
       </div>
     </div>
-    <div class="answers__D answer" @click="onClickAnswer">
-      <div class="answer__box">
+    <div class="answers__D answer">
+      <div class="answer__box" @click="onClickAnswer">
         <div class="letter__wrapper">
           <div class="answers__letter">
-            <p>D</p>
+            <p><img src="../assets/D.svg" alt="D" width="15px" height="15px"></p>
           </div>
         </div>
         <div class="answers__text">
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+          {{ getAnswers('3') }}
         </div>
       </div>
     </div>
@@ -52,11 +52,43 @@
 </template>
 
 <script>
+import { mapGetters, mapActions } from 'vuex';
+
 export default {
   name: 'Quiz',
+  data: () => ({
+    isOver: false,
+  }),
   methods: {
-    onClickAnswer() {
-
+    ...mapActions(['changeScore', 'changeNum']),
+    onClickAnswer(event) {
+      // const elem = Object.entries((this.ANSWERS)[this.NUM_QUESTION - 1]);
+      // console.log(elem[0][0]);
+      const answers = (this.ANSWERS)[this.NUM_QUESTION - 1];
+      const el = (event.target.textContent).trim();
+      console.log(el);
+      const method = answers[el];
+      // this.changeScore();
+      console.log(method);
+      if (this.NUM_QUESTION < this.CNT_QUESTIONS) {
+        this.changeScore(method);
+        this.changeNum();
+      } else {
+        this.changeScore(method);
+        console.log('the end!');
+        this.$emit('passQuiz');
+        this.isOver = true;
+      }
+    },
+  },
+  computed: {
+    ...mapGetters(['NUM_QUESTION', 'CNT_QUESTIONS', 'QUESTIONS', 'ANSWERS']),
+    // getAnswers() {
+    //   return n => (Object.entries(this.ANSWERS)[`${n}`][0][0]);
+    // },
+    getAnswers() {
+      const elem = Object.entries((this.ANSWERS)[this.NUM_QUESTION - 1]);
+      return n => (elem[`${n}`][0]);
     },
   },
 };
@@ -118,8 +150,9 @@ export default {
 }
 .answers__text {
   display: flex;
-  justify-content: center;
+  /* justify-content: center; */
   align-items: center;
+  text-align:start;
 }
 .answers__letter {
   color: white;

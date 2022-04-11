@@ -21,17 +21,19 @@ def get_responces(num, flask_request_local: flask_request):
     answers = query.get_answers(num)
     return answers
 
-@app.route('/answers', methods=['POST'])
-def get_answers():
-    num = flask_request.form.get('number')
-    print(num)
-    answers = get_responces(num, flask_request_local=flask_request)
-    return jsonify(answers)
+# @app.route('/answers', methods=['POST'])
+# def get_answers():
+#     print(dict(flask_request.form.items()))
+#     num = flask_request.form.get('number')
+#     print(num)
+#     answers = get_responces(num, flask_request_local=flask_request)
+#     return jsonify(answers)
 
 @app.route('/list_answers', methods=['GET'])
-def get_answers():
+def get_list():
     answers = query.get_list_answers()
-    return answers
+    # print(answers)
+    return jsonify(answers)
 
 if __name__ == '__main__':
     app.run()

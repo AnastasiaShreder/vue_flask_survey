@@ -3,7 +3,7 @@
     <div class="quiz-wrapper">
       <Question></Question>
       <hr class="quiz-line">
-      <Quiz></Quiz>
+      <Quiz @passQuiz="passQuiz"></Quiz>
     </div>
   </div>
 </template>
@@ -18,6 +18,12 @@ export default {
   components: {
     Question,
     Quiz,
+  },
+  methods: {
+    passQuiz() {
+      console.log('the end!');
+      this.$router.push({ name: 'Result' });
+    },
   },
 };
 </script>

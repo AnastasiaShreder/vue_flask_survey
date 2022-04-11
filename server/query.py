@@ -9,7 +9,21 @@ def get_list_questions():
     # list[q.id] = q.question
   print(list)
   return list
-get_list_questions()
+# get_list_questions()
+
+def get_list_answers():
+  list_all = []
+  questions = Questions.query.all()
+  for q in questions:
+    list = {}
+    answers = Answers.query.filter_by(question_id=q.id)
+    for a in answers:
+      # print(a)
+      list[a.answer] = a.mthd
+    list_all.append(list)
+  print(list_all)
+  return list_all
+get_list_answers()
 
 def get_answers(q_id):
   list = {}
@@ -20,14 +34,6 @@ def get_answers(q_id):
   print(list)
   return list
 
-def get_list_answers(q_id):
-  list = {}
-  answers = Answers.query.filter_by(question_id=q_id)
-  for a in answers:
-    print(a)
-    list[a.answer] = a.mthd
-  print(list)
-  return list
 # a = Answers(question_id="5",
 # answer="Да",
 # mthd="A")

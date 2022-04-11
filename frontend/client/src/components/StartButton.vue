@@ -14,7 +14,7 @@ import { mapActions, mapGetters } from 'vuex';
 export default {
   name: 'StartButton',
   methods: {
-    ...mapActions(['changeList', 'changeNum']),
+    ...mapActions(['changeList', 'changeCnt', 'changeAnswers']),
     onClickStartTest() {
       axios.get('http://localhost:5000/quiz')
         .then((response) => {
@@ -22,7 +22,7 @@ export default {
           console.log(response.data);
           // this.changeList(response.data);
           const listCount = Object.keys(response.data).length;
-          this.changeNum(listCount);
+          this.changeCnt(listCount);
           this.changeList(response.data);
           // eslint-disable-next-line no-console
           console.log(listCount);
@@ -33,13 +33,30 @@ export default {
         // eslint-disable-next-line no-console
           console.log(error);
         });
-      const numQuest = this.NUM_QUESTION;
-      const formData = new FormData();
-      formData.append('number', numQuest);
-      axios.post('http://localhost:5000/answers', formData)
+      // const numQuest = this.NUM_QUESTION;
+      // const formData = new FormData();
+      // formData.append('number', numQuest);
+      // axios.post('http://localhost:5000/answers', formData)
+      //   .then((response) => {
+      //   // eslint-disable-next-line no-console
+      //     console.log(response.data);
+      //     this.changeAnswers(response.data);
+      //     // this.changeList(response.data);
+      //     const listCount = Object.keys(response.data).length;
+      //     // eslint-disable-next-line no-console
+      //     console.log(listCount);
+      //     // this.changeNum()
+      //   })
+      // // Если запрос с ошибкой
+      //   .catch((error) => {
+      //   // eslint-disable-next-line no-console
+      //     console.log(error);
+      //   });
+      axios.get('http://localhost:5000/list_answers')
         .then((response) => {
         // eslint-disable-next-line no-console
           console.log(response.data);
+          this.changeAnswers(response.data);
           // this.changeList(response.data);
           const listCount = Object.keys(response.data).length;
           // eslint-disable-next-line no-console
