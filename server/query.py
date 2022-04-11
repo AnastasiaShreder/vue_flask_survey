@@ -20,9 +20,9 @@ def get_answers(q_id):
   print(list)
   return list
 
-def get_list_answers():
+def get_list_answers(q_id):
   list = {}
-  answers = Answers.query.all()
+  answers = Answers.query.filter_by(question_id=q_id)
   for a in answers:
     print(a)
     list[a.answer] = a.mthd
