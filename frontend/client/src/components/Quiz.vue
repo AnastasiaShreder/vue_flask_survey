@@ -64,6 +64,7 @@ export default {
     onClickAnswer(event) {
       // const elem = Object.entries((this.ANSWERS)[this.NUM_QUESTION - 1]);
       // console.log(elem[0][0]);
+
       const answers = (this.ANSWERS)[this.NUM_QUESTION - 1];
       const el = (event.target.textContent).trim();
       console.log(el);
@@ -72,7 +73,7 @@ export default {
       console.log(method);
       if (this.NUM_QUESTION < this.CNT_QUESTIONS) {
         this.changeScore(method);
-        this.changeNum();
+        setTimeout(() => this.changeNum(), 500);
       } else {
         this.changeScore(method);
         console.log('the end!');

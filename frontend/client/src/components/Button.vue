@@ -9,11 +9,15 @@
 <script>
 // eslint-disable-next-line no-unused-vars
 import axios from 'axios';
+import { mapActions } from 'vuex';
 
 export default {
   name: 'Button',
   methods: {
-    onClickRestart() {},
+    ...mapActions(['changeNum', 'resetNum']),
+    onClickRestart() {
+      this.resetNum();
+    },
   },
 };
 </script>
