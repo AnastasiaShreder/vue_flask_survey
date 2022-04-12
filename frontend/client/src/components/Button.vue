@@ -14,9 +14,10 @@ import { mapActions } from 'vuex';
 export default {
   name: 'Button',
   methods: {
-    ...mapActions(['changeNum', 'resetNum']),
+    ...mapActions(['changeNum', 'resetNum', 'resetScore']),
     onClickRestart() {
       this.resetNum();
+      this.resetScore();
     },
   },
 };

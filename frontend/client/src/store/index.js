@@ -26,6 +26,11 @@ export default new Vuex.Store({
       state.numQuestion += 1;
     },
     RESET_NUM_QUESTION(state) {
+      state.listScore.A = 0;
+      state.listScore.W = 0;
+      state.listScore.O = 0;
+    },
+    RESET_SCORE(state) {
       state.numQuestion = 1;
     },
     CHANGE_LIST(state, newList) {
@@ -59,6 +64,9 @@ export default new Vuex.Store({
     },
     resetNum({ commit }) {
       commit('RESET_NUM_QUESTION');
+    },
+    resetScore({ commit }) {
+      commit('RESET_SCORE');
     },
   },
   modules: {},
