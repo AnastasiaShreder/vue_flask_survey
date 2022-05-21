@@ -1,1 +1,0 @@
-ALTER TABLE responces DROP COLUMN type;

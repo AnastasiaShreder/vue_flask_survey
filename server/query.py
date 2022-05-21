@@ -34,6 +34,8 @@ def get_answers(q_id):
   print(list)
   return list
 
+Answers.query.filter_by(id=1).delete()
+
 # a = Answers(question_id="5",
 # answer="Да",
 # mthd="A")

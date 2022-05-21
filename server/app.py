@@ -17,9 +17,9 @@ def get_quiz():
     questions = query.get_list_questions()
     return jsonify(questions)
 
-def get_responces(num, flask_request_local: flask_request):
-    answers = query.get_answers(num)
-    return answers
+# def get_responces(num, flask_request_local: flask_request):
+#     answers = query.get_answers(num)
+#     return answers
 
 # @app.route('/answers', methods=['POST'])
 # def get_answers():
