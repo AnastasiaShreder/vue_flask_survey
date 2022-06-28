@@ -21,6 +21,7 @@ export default {
   },
   methods: {
     passQuiz() {
+      // eslint-disable-next-line no-console
       console.log('the end!');
       this.$router.push({ name: 'Result' });
     },

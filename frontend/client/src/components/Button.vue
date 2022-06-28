@@ -48,7 +48,7 @@ export default {
     -o-transition: all .4s ease-in-out;
     -webkit-transition: all .4s ease-in-out;
     transition: all .4s ease-in-out;
-    background-image: linear-gradient(to right, #6F1ED7, #3aafdd, #30AAD0, #6F1ED7);
+    background-image: linear-gradient(to right, #6F1ED7, #ae93d1);
     box-shadow: 0 4px 15px 0 rgba(116, 79, 168, 0.75);
 }
 .btn-hover:hover {
