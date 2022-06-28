@@ -36,7 +36,7 @@
         </div>
       </div>
     </div>
-    <div class="answers__D answer">
+    <!-- <div class="answers__D answer">
       <div class="answer__box" @click="onClickAnswer">
         <div class="letter__wrapper">
           <div class="answers__letter">
@@ -47,7 +47,7 @@
           {{ getAnswers('3') }}
         </div>
       </div>
-    </div>
+    </div> -->
   </div>
 </template>
 
@@ -104,7 +104,7 @@ export default {
 }
 .quiz-wrapper__answers {
   margin: auto;
-  width: 70%;
+  width: 80%;
   height: 350px;
   display: flex;
   flex-direction: column;
@@ -116,7 +116,7 @@ export default {
   border-radius: 32px;
   width: 100%;
   transition: all .2s;
-  /* padding: 2px; */
+  padding: 10px;
 }
 .answer:hover{
   background: #9a8cdfc4;
@@ -139,6 +139,7 @@ export default {
   display: flex;
   justify-content: flex-start;
   width: 100%;
+  /* height: 100px; */
   padding-left: 15px;
 }
 .answers__letter {
@@ -150,6 +151,7 @@ export default {
   width: 28px;
 }
 .answers__text {
+  font-size: 22px;
   display: flex;
   /* justify-content: center; */
   align-items: center;

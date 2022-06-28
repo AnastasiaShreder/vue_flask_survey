@@ -23,7 +23,7 @@ def get_list_answers():
     list_all.append(list)
   print(list_all)
   return list_all
-get_list_answers()
+# get_list_answers()
 
 def get_answers(q_id):
   list = {}
@@ -34,19 +34,28 @@ def get_answers(q_id):
   print(list)
   return list
 
-Answers.query.filter_by(id=1).delete()
-
+# q = Questions(id = "2", question = "У всех участников высокий уровень квалификации?")
+# db.session.query(Questions).delete()
 # a = Answers(question_id="5",
 # answer="Да",
 # mthd="A")
+
+# a = Answers(question_id="10",
+# answer="Задачи, связанные с документацией, будут выполняться в последнюю очередь",
+# mthd="F")
+# db.session.add(a)
+# db.session.commit()
+# a = Answers(question_id="10",
+# answer="Полноценная документация не предусмотрена",
+# mthd="S")
+# db.session.add(a)
+# db.session.commit()
+# a = Answers(question_id="10",
+# answer="Необходимо наличие документации одного из видов",
+# mthd="D")
 # db.session.add(a)
 # db.session.commit()
 
-# a = Answers(question_id="5",
-# answer="Нет",
-# mthd="W")
-# db.session.add(a)
-# db.session.commit()
 
 # a = Answers(question_id="5",
 # answer="Скорее да, чем нет",

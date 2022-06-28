@@ -9,7 +9,7 @@ export default new Vuex.Store({
     countQuestions: 0,
     listQuestions: [],
     listAnswers: {},
-    listScore: { A: 0, W: 0, O: 0 },
+    listScore: { S: 0, F: 0, D: 0 },
   },
   getters: {
     NUM_QUESTION: state => state.numQuestion,
@@ -26,9 +26,9 @@ export default new Vuex.Store({
       state.numQuestion += 1;
     },
     RESET_NUM_QUESTION(state) {
-      state.listScore.A = 0;
-      state.listScore.W = 0;
-      state.listScore.O = 0;
+      state.listScore.F = 0;
+      state.listScore.S = 0;
+      state.listScore.D = 0;
     },
     RESET_SCORE(state) {
       state.numQuestion = 1;
